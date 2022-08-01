@@ -3,6 +3,7 @@ let num2 = 0;
 let operator = "+";
 let currentdisplay = "0";
 let predisplay = "";
+let checkoperator = false;
 
 function add(num1, num2)
 {
@@ -128,18 +129,32 @@ three.addEventListener("click", function(event)
 // Add ability
 plus.addEventListener("click", function(event)
 {
-    num1 = Number(currentdisplay);
-    operator = "+";
-    currentdisplay += operator;
-    predisplay = currentdisplay;
-    display.textContent = currentdisplay;
+    if (checkoperator == false)
+    {
+        num1 = Number(currentdisplay);
+        operator = "+";
+        currentdisplay += operator;
+        predisplay = currentdisplay;
+        display.textContent = currentdisplay;
+        checkoperator = true;
+    }
+    else
+    {
+        equalFunc();
+    }
 });
 
 
 // Equal ability
-equal.addEventListener("click", function(event)
+
+function equalFunc()
 {
     num2 = Number(currentdisplay.replace(predisplay, ''));
     display.textContent = operate(operator, num1, num2);
     currentdisplay = operate(operator, num1, num2);
+    checkoperator = false;
+}
+equal.addEventListener("click", function(event)
+{
+    equalFunc();
 });
