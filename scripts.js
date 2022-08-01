@@ -1,7 +1,8 @@
-let num1 = 1;
-let num2 = 2;
+let num1 = 0;
+let num2 = 0;
 let operator = "+";
 let currentdisplay = "0";
+let predisplay = "";
 
 function add(num1, num2)
 {
@@ -43,8 +44,13 @@ function operate(operator, num1, num2)
     }
 }
 
+// Display
 const display = document.querySelector("#display");
+
+// Clear button
 const clear = document.querySelector("#clear");
+
+// Number buttons
 const seven = document.querySelector("#seven");
 const eight = document.querySelector("#eight");
 const nine = document.querySelector("#nine");
@@ -54,6 +60,10 @@ const six = document.querySelector("#six");
 const one = document.querySelector("#one");
 const two = document.querySelector("#two");
 const three = document.querySelector("#three");
+
+// Math operators
+const plus = document.querySelector("#add");
+const equal = document.querySelector("#equal");
 
 // Clear current display
 clear.addEventListener("click", function(event)
@@ -113,4 +123,23 @@ two.addEventListener("click", function(event)
 three.addEventListener("click", function(event)
 {
     displayNumber("3");
+});
+
+// Add ability
+plus.addEventListener("click", function(event)
+{
+    num1 = Number(currentdisplay);
+    operator = "+";
+    currentdisplay += operator;
+    predisplay = currentdisplay;
+    display.textContent = currentdisplay;
+});
+
+
+// Equal ability
+equal.addEventListener("click", function(event)
+{
+    num2 = Number(currentdisplay.replace(predisplay, ''));
+    display.textContent = operate(operator, num1, num2);
+    currentdisplay = operate(operator, num1, num2);
 });
