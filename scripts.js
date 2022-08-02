@@ -211,7 +211,7 @@ function equalFunc()
         alert("Cannot divide by zero!");
         num2 = 1;
     }
-    display.textContent = operate(operator, num1, num2);
+    display.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
     currentdisplay = operate(operator, num1, num2);
     checkoperator = false;
 }
