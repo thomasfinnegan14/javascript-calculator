@@ -64,6 +64,7 @@ const three = document.querySelector("#three");
 
 // Math operators
 const plus = document.querySelector("#add");
+const minus = document.querySelector("#subtract");
 const equal = document.querySelector("#equal");
 
 // Clear current display
@@ -144,6 +145,23 @@ plus.addEventListener("click", function(event)
     }
 });
 
+// Subtract ability
+minus.addEventListener("click", function(event)
+{
+    if (checkoperator == false)
+    {
+        num1 = Number(currentdisplay);
+        operator = "-";
+        currentdisplay += operator;
+        predisplay = currentdisplay;
+        display.textContent = currentdisplay;
+        checkoperator = true;
+    }
+    else
+    {
+        equalFunc();
+    }
+});
 
 // Equal ability
 
