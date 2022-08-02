@@ -66,6 +66,7 @@ const three = document.querySelector("#three");
 const plus = document.querySelector("#add");
 const minus = document.querySelector("#subtract");
 const equal = document.querySelector("#equal");
+const mult = document.querySelector("#multiply");
 
 // Clear current display
 clear.addEventListener("click", function(event)
@@ -152,6 +153,24 @@ minus.addEventListener("click", function(event)
     {
         num1 = Number(currentdisplay);
         operator = "-";
+        currentdisplay += operator;
+        predisplay = currentdisplay;
+        display.textContent = currentdisplay;
+        checkoperator = true;
+    }
+    else
+    {
+        equalFunc();
+    }
+});
+
+// Multiply Ability
+mult.addEventListener("click", function(event)
+{
+    if (checkoperator == false)
+    {
+        num1 = Number(currentdisplay);
+        operator = "*";
         currentdisplay += operator;
         predisplay = currentdisplay;
         display.textContent = currentdisplay;
