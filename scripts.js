@@ -4,6 +4,7 @@ let operator = "+";
 let currentdisplay = "0";
 let predisplay = "";
 let checkoperator = false;
+let checkdecimal = false;
 
 function add(num1, num2)
 {
@@ -68,6 +69,7 @@ const minus = document.querySelector("#subtract");
 const equal = document.querySelector("#equal");
 const mult = document.querySelector("#multiply");
 const division = document.querySelector("#divide");
+const decimal = document.querySelector("#decimal");
 
 // Clear current display
 clear.addEventListener("click", function(event)
@@ -140,6 +142,7 @@ plus.addEventListener("click", function(event)
         predisplay = currentdisplay;
         display.textContent = currentdisplay;
         checkoperator = true;
+        checkdecimal = false;
     }
     else
     {
@@ -158,6 +161,7 @@ minus.addEventListener("click", function(event)
         predisplay = currentdisplay;
         display.textContent = currentdisplay;
         checkoperator = true;
+        checkdecimal = false;
     }
     else
     {
@@ -176,6 +180,7 @@ mult.addEventListener("click", function(event)
         predisplay = currentdisplay;
         display.textContent = currentdisplay;
         checkoperator = true;
+        checkdecimal = false;
     }
     else
     {
@@ -194,12 +199,24 @@ division.addEventListener("click", function(event)
         predisplay = currentdisplay;
         display.textContent = currentdisplay;
         checkoperator = true;
+        checkdecimal = false;
     }
     else
     {
         equalFunc();
     }
 });
+
+// Decimal ability
+decimal.addEventListener("click", function(event)
+{
+    if (checkoperator == false && currentdisplay % 1 == 0 && checkdecimal == false)
+    {
+        currentdisplay += ".";
+        display.textContent = currentdisplay;
+        checkdecimal = true;
+    }
+})
 
 // Equal ability
 
@@ -214,6 +231,7 @@ function equalFunc()
     display.textContent = Math.round(operate(operator, num1, num2) * 100) / 100;
     currentdisplay = operate(operator, num1, num2);
     checkoperator = false;
+    checkdecimal = false;
 }
 equal.addEventListener("click", function(event)
 {
