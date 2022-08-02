@@ -71,6 +71,7 @@ const equal = document.querySelector("#equal");
 const mult = document.querySelector("#multiply");
 const division = document.querySelector("#divide");
 const decimal = document.querySelector("#decimal");
+const plusminus = document.querySelector("#plusminus");
 
 // Clear current display
 clear.addEventListener("click", function(event)
@@ -220,6 +221,21 @@ decimal.addEventListener("click", function(event)
         currentdisplay += ".";
         display.textContent = currentdisplay;
         checkdecimal = true;
+    }
+});
+
+// Plus/Minus ability
+plusminus.addEventListener("click", function(event)
+{
+    if (checkoperator == false && Number(currentdisplay) < 0)
+    {
+        currentdisplay = Math.abs(currentdisplay);
+        display.textContent = currentdisplay;
+    }
+    else if (checkoperator == false && Number(currentdisplay) > 0)
+    {
+        currentdisplay = -Math.abs(currentdisplay);
+        display.textContent = currentdisplay;
     }
 });
 
