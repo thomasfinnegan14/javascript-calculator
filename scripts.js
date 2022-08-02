@@ -62,6 +62,7 @@ const six = document.querySelector("#six");
 const one = document.querySelector("#one");
 const two = document.querySelector("#two");
 const three = document.querySelector("#three");
+const zero = document.querySelector("#zero");
 
 // Math operators
 const plus = document.querySelector("#add");
@@ -130,6 +131,10 @@ three.addEventListener("click", function(event)
 {
     displayNumber("3");
 });
+zero.addEventListener("click", function(event)
+{
+    displayNumber("0");
+})
 
 // Add ability
 plus.addEventListener("click", function(event)
@@ -216,7 +221,7 @@ decimal.addEventListener("click", function(event)
         display.textContent = currentdisplay;
         checkdecimal = true;
     }
-})
+});
 
 // Equal ability
 
