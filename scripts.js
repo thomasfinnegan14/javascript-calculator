@@ -67,6 +67,7 @@ const plus = document.querySelector("#add");
 const minus = document.querySelector("#subtract");
 const equal = document.querySelector("#equal");
 const mult = document.querySelector("#multiply");
+const division = document.querySelector("#divide");
 
 // Clear current display
 clear.addEventListener("click", function(event)
@@ -164,7 +165,7 @@ minus.addEventListener("click", function(event)
     }
 });
 
-// Multiply Ability
+// Multiply ability
 mult.addEventListener("click", function(event)
 {
     if (checkoperator == false)
@@ -182,11 +183,34 @@ mult.addEventListener("click", function(event)
     }
 });
 
+// Divide ability
+division.addEventListener("click", function(event)
+{
+    if (checkoperator == false)
+    {
+        num1 = Number(currentdisplay);
+        operator = "/";
+        currentdisplay += operator;
+        predisplay = currentdisplay;
+        display.textContent = currentdisplay;
+        checkoperator = true;
+    }
+    else
+    {
+        equalFunc();
+    }
+});
+
 // Equal ability
 
 function equalFunc()
 {
     num2 = Number(currentdisplay.replace(predisplay, ''));
+    if (operator == "/" && num2 == 0)
+    {
+        alert("Cannot divide by zero!");
+        num2 = 1;
+    }
     display.textContent = operate(operator, num1, num2);
     currentdisplay = operate(operator, num1, num2);
     checkoperator = false;
