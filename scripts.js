@@ -72,6 +72,7 @@ const mult = document.querySelector("#multiply");
 const division = document.querySelector("#divide");
 const decimal = document.querySelector("#decimal");
 const plusminus = document.querySelector("#plusminus");
+const percent = document.querySelector("#percent");
 
 // Clear current display
 clear.addEventListener("click", function(event)
@@ -238,6 +239,15 @@ plusminus.addEventListener("click", function(event)
         display.textContent = currentdisplay;
     }
 });
+
+percent.addEventListener("click", function(event)
+{
+    if (checkoperator == false)
+    {
+        currentdisplay = currentdisplay / 100;
+        display.textContent = currentdisplay;
+    }
+})
 
 // Equal ability
 
